@@ -46,25 +46,44 @@
 .Page-container {
   overflow: hidden;
   width: 100%;
+  padding-top: 5%;
 }
 
 .Page-element {
   float: left;
-  justify-content: center;
 }
 
 .Param-grid {
-  width: 40%;
+  width: 35%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .Results {
-  width: 60%;
+  width: 40%;
+  padding-left: 5%;
 }
 
 .White-box {
   background-color: rgb(66, 66, 66);
   border-radius: 5px;
   padding: 5%;
+}
+
+.Param-child a {
+  width: 40%;
+}
+
+.Param-child input {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.Param-child input:focus {
+  border: 3px solid #555;
 }
 
 @keyframes App-logo-spin {

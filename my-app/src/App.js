@@ -23,12 +23,24 @@ function App() {
 
           <div className="Param-grid Page-element">
             <div className="White-box">
-              <a>Paramaters:</a>
-              <a></a><input></input>
+
+              <div className="Param-child Title">Search Paramaters:</div>
+              <div className="Param-child">
+                <a>User:</a>
+                <input></input>
+              </div>
+              <div className="Param-child">
+                <a>Table:</a>
+                <input></input>
+              </div>
+
+              
+              
+
             </div>
           </div>
-          <div className="Results Page-element">
-            World
+          <div className="Results Page-element White-box">
+            <div>Results</div>
           </div>
 
           </div>
