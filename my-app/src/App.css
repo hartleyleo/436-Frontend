@@ -19,30 +19,6 @@
   color: #61dafb;
 }
 
-.Nav-bar {
-  background-color: #333;
-  overflow: hidden;
-}
-
-.Nav-button {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 0px;
-  text-decoration: none;
-  font-size: 17px;
-  width: 25%;
-}
-
-.Nav-bar div:hover {
-  background-color: rgb(99, 99, 99);
-}
-
-.Nav-button div:active {
-  background-color: #04AA6D;
-  color: red;
-}
-
 .Page-container {
   overflow: hidden;
   width: 100%;
@@ -103,22 +79,56 @@
   }
 }
 
+/* 
+.Nav-bar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.Nav-button {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 0px;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%;
+}
+
+.Nav-bar div:hover {
+  background-color: rgb(99, 99, 99);
+}
+
+.Nav-button div:active {
+  background-color: #04AA6D;
+  color: red;
+} */
+
 
 
 .tab-list {
-  border-bottom: 1px solid #ccc;
-  padding-left: 0;
+  display: inline-block;
+  margin-right: 1px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .tab-list-item {
-  display: inline-block;
+  float: left;
   list-style: none;
-  margin-bottom: -1px;
-  padding: 0.5rem 0.75rem;
+  display:block;
+  min-width:140px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
+  background-color: #333;
+  text-decoration: none;
+  width: 25%;
 }
 
 .tab-list-active {
-  background-color: white;
-  border: solid #ccc;
+  background-color: rgb(69, 68, 87);
   border-width: 1px 1px 0 1px;
 }
