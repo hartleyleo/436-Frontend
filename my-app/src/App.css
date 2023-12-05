@@ -6,6 +6,7 @@
 
 .App {
   background-color: #4F6F9E;
+  height: 100vh;
 }
 
 .App-header {
@@ -102,7 +103,7 @@
   padding: 14px 0px;
   text-decoration: none;
   font-size: 17px;
-  width: 33%;
+  width: 33.3%;
 }
 
 .Nav-bar div:hover {
@@ -219,7 +220,21 @@
 
 .result-table-container {
   width: 100%;
-  height: 100%;
+  height: 80%; /* Get height from the .right-section */
   overflow: auto;
   border: 1px solid #ddd;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 10px; /* Adjust the distance from the bottom as needed */
+  left: 10px; /* Adjust the distance from the left as needed */
+  z-index: 999; /* Set a high z-index to make sure the button is on top of other elements */
+  padding: 15px;
+  font-size: 18px;
+  background-color: #474747;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
 }

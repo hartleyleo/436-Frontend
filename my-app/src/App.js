@@ -6,11 +6,13 @@ import Update from "./Update.js";
 import Delete from "./Delete.js";
 import ResultTable from "./components/ResultTable.js";
 import TableDropdown from "./components/TableDropdown.js";
-
+import AdsCreateList from './components/AdsCreateList.js';
 
 function App() {
 
-  const [pageState, setPageState] = useState(Create);
+  const [pageState, setPageState] = useState(0);
+  const [pageUpdate, setPageUpdate] = useState("");
+  
   const [adDataList, setAdList] = useState([]);
   const [userDataList, setUserList] = useState([]);
   const [productDataList, setProductList] = useState([]);
@@ -52,6 +54,11 @@ function App() {
     setAdList(list);
   }
 
+  const setUpdate = () => {
+    setPageUpdate(pageUpdate + "")
+  }
+
+  
   const adHeaderList = ['AdID', 'ProductID', 'UserID', 'Text', 'ClickCounter', 'MediaLink'];
 
   return (
@@ -60,30 +67,29 @@ function App() {
       <div className="Admin-bar">Mockbook - Admin Page</div>
 
       <div className="Nav-bar">
-
-        <div className="Nav-button" onClick={() => setState(Create)}>Create</div>
-        <div className="Nav-button" onClick={() => setState(Update)}>Update</div>
-        <div className="Nav-button" onClick={() => setState(Delete)}>Delete</div>
-      </div>
-
-      <div class="container">
-          <div class="left-section">
-              <h2>Create Data Entry:</h2>
-              <TableDropdown onSelect={setAds}/>
-          </div>
-          <div class="right-section">
-              <h2>Results</h2>
-              <button onClick={setAds}>Update Table</button>
-              <div className="result-table-container">
-                <ResultTable data={adDataList} header={adHeaderList}/>
-              </div>
-          </div>
+        <div className="Nav-button" onClick={() => setState(0)}>Create</div>
+        <div className="Nav-button" onClick={() => setState(1)}>Update</div>
+        <div className="Nav-button" onClick={() => setState(2)}>Delete</div>
       </div>
 
 
+      <div>{pageUpdate}</div>
+
+      {pageState == 0 && (
+        <Create 
+          setAds={ setAds }
+          adDataList={ adDataList }
+        />
+      )}
+      {/* USE THIS FOR CONDITIONAL PAGES */}
 
 
-      <div>{pageState}</div>
+      <button 
+        className="fixed-button"
+        onClick={setUpdate}
+      >
+        Update Page
+      </button>
 
     </div>
 
