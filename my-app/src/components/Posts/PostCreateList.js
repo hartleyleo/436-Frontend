@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-const ProductCreateList = () => {
+const PostCreateList = () => {
 
-  const [inputValues, setInputValues] = useState(['', '', '', '', '', '']);
+  const [inputValues, setInputValues] = useState(['', '', '', '', '']);
 
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
@@ -11,22 +11,19 @@ const ProductCreateList = () => {
     setInputValues(newInputValues);
   };
 
-  const postProducts = async () => {
+  const postPosts = async () => {
 
-    const postData = {
-        adId: inputValues[0],
-        // ------------------
-        // ADD IN VALUES HERE
-        // ------------------
+    const postData = {      
+      likes: inputValues[1],
+      plocation: inputValues[2],
+      postId: inputValues[0],
+      post_Date: inputValues[3],
+      pproductId: inputValues[4],
     };
-
-    // ---Testing---
-    console.log(postData);
-    // -------------
 
     try {
 
-      const apiUrl = 'http://127.0.0.1:8070/Products';
+      const apiUrl = 'http://127.0.0.1:8070/Posts';
       const response = await Axios.post(apiUrl, postData);
 
       console.log('Response:', response.data);
@@ -36,7 +33,7 @@ const ProductCreateList = () => {
     }
   };
 
-  const inputLabels = ['ProductID', 'Status', 'Type', 'Price', 'UserID', 'Description'];
+  const inputLabels = ['PostID', 'Likes', 'Location', 'Post Date', 'ProductID'];
 
   return (
     <div>
@@ -53,9 +50,9 @@ const ProductCreateList = () => {
             ))}
         </div>
 
-        <button onClick={postProducts}>Create Entry</button>
+        <button onClick={postPosts} className="entry-button">Create Entry</button>
     </div>
   );
 };
 
-export default ProductCreateList;
+export default PostCreateList;

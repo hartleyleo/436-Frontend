@@ -170,20 +170,19 @@
 
 .Header-Row-Item {
   flex: 1;
-  border: 1px solid #b96868;
+  border: 1px solid #4F6F9E;
   padding: 8px;
-  margin: 0 4px;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Result-Row-Item {
   flex: 1;
   border: 1px solid #ddd;
   padding: 8px;
-  margin: 0 4px;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
@@ -227,9 +226,9 @@
 
 .fixed-button {
   position: fixed;
-  bottom: 10px; /* Adjust the distance from the bottom as needed */
-  left: 10px; /* Adjust the distance from the left as needed */
-  z-index: 999; /* Set a high z-index to make sure the button is on top of other elements */
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
   padding: 15px;
   font-size: 18px;
   background-color: #474747;
@@ -237,4 +236,25 @@
   border: none;
   cursor: pointer;
   border-radius: 15px;
+}
+
+.entry-button {
+  display: inline-block;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #4F6F9E;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.entry-button:hover {
+  background-color: rgb(87, 127, 186);
+  border-color: #2980b9;
 }

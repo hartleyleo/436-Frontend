@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Axios from 'axios';
 
-const CommentCreateList = () => {
+const AdsCreateList = () => {
 
-  const [inputValues, setInputValues] = useState(['', '', '', '', '']);
+  const [inputValues, setInputValues] = useState(['', '', '', '', '', '', '', '']);
 
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
@@ -11,13 +11,17 @@ const CommentCreateList = () => {
     setInputValues(newInputValues);
   };
 
-  const postComments = async () => {
+  const postAds = async () => {
 
     const postData = {
         adId: inputValues[0],
-        // ------------------
-        // ADD IN VALUES HERE
-        // ------------------
+        aproductId: inputValues[1],
+        auserId: inputValues[2],
+        clickcounter: inputValues[3],
+        mediaLink: inputValues[4],
+        product: null,
+        text: inputValues[5],
+        user: null,
     };
 
     // ---Testing---
@@ -26,7 +30,7 @@ const CommentCreateList = () => {
 
     try {
 
-      const apiUrl = 'http://127.0.0.1:8070/Comments';
+      const apiUrl = 'http://127.0.0.1:8070/Ads';
       const response = await Axios.post(apiUrl, postData);
 
       console.log('Response:', response.data);
@@ -36,7 +40,7 @@ const CommentCreateList = () => {
     }
   };
 
-  const inputLabels = ['CommentID', 'Content', 'Comment Date', 'UserID', 'PostID'];
+  const inputLabels = ['AdID', 'ProductID', 'UserID', 'ClickCounter', 'MediaLink', 'Text'];
 
   return (
     <div>
@@ -53,9 +57,9 @@ const CommentCreateList = () => {
             ))}
         </div>
 
-        <button onClick={postComments}>Create Entry</button>
+        <button onClick={postAds} className="entry-button">Create Entry</button>
     </div>
   );
 };
 
-export default CommentCreateList;
+export default AdsCreateList;

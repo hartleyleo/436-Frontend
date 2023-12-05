@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-const PostCreateList = () => {
+const CommentCreateList = () => {
 
   const [inputValues, setInputValues] = useState(['', '', '', '', '']);
 
@@ -11,22 +11,19 @@ const PostCreateList = () => {
     setInputValues(newInputValues);
   };
 
-  const postPosts = async () => {
+  const postComments = async () => {
 
     const postData = {
-        adId: inputValues[0],
-        // ------------------
-        // ADD IN VALUES HERE
-        // ------------------
+      com_date: inputValues[4],
+      commentId: inputValues[0],
+      content: inputValues[1],
+      cpost_id: inputValues[3],
+      cuser_id: inputValues[2],
     };
-
-    // ---Testing---
-    console.log(postData);
-    // -------------
 
     try {
 
-      const apiUrl = 'http://127.0.0.1:8070/Posts';
+      const apiUrl = 'http://127.0.0.1:8070/Comments';
       const response = await Axios.post(apiUrl, postData);
 
       console.log('Response:', response.data);
@@ -36,7 +33,7 @@ const PostCreateList = () => {
     }
   };
 
-  const inputLabels = ['PostID', 'Likes', 'Location', 'Post Date', 'ProductID'];
+  const inputLabels = ['CommentID', 'Content', 'Comment Date', 'UserID', 'PostID'];
 
   return (
     <div>
@@ -53,9 +50,9 @@ const PostCreateList = () => {
             ))}
         </div>
 
-        <button onClick={postPosts}>Create Entry</button>
+        <button onClick={postComments} className='entry-button'>Create Entry</button>
     </div>
   );
 };
 
-export default PostCreateList;
+export default CommentCreateList;

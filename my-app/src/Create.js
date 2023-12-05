@@ -1,18 +1,17 @@
-import Tabs from "./components/Tabs.js";
 import React, { useState } from "react";
 import ResultTable from "./components/ResultTable.js";
 import TableDropdown from "./components/TableDropdown.js";
-import AdsCreateList from "./components/AdsCreateList.js";
-import UsersCreateList from "./components/UserCreateList.js"
-import ProductCreateList from "./components/ProductCreateList.js";
-import PostCreateList from "./components/PostCreateList.js";
-import CommentCreateList from "./components/CommentCreateList.js";
+import AdsCreateList from "./components/Ads/AdsCreateList.js";
+import UsersCreateList from "./components/Users/UserCreateList.js"
+import ProductCreateList from "./components/Products/ProductCreateList.js";
+import PostCreateList from "./components/Posts/PostCreateList.js";
+import CommentCreateList from "./components/Comments/CommentCreateList.js";
 
 const Create = ({ 
   setAds, adDataList, 
-  // setPosts, postDataList, 
-  // setComments, commentDataList,
-  // setProducts, productDataList,
+  setPosts, postDataList, 
+  setComments, commentDataList,
+  setProducts, productDataList,
   setUsers, userDataList
 }) => {
 
@@ -54,7 +53,7 @@ const Create = ({
         <h2>Results</h2>
         {activeTable == 'Ads' &&
           <div>
-            <button onClick={setAds}>Update Table</button>
+            <button onClick={setAds} className="entry-button">Update Table</button>
             <div className="result-table-container">
               <ResultTable data={adDataList} header={adHeaderList}/>
             </div>
@@ -62,16 +61,15 @@ const Create = ({
         }
         {activeTable == 'Users' &&
           <div>
-            Users
-            <button onClick={setUsers}>Update Table</button>
+            <button onClick={setUsers} className="entry-button">Update Table</button>
             <div className="result-table-container">
               <ResultTable data={userDataList} header={userHeaderList}/>
             </div>
           </div>
         }
-        {/* {activeTable == 'Products' &&
+        {activeTable == 'Products' &&
           <div>
-            <button onClick={setProducts}>Update Table</button>
+            <button onClick={setProducts} className="entry-button">Update Table</button>
             <div className="result-table-container">
               <ResultTable data={productDataList} header={productHeaderList}/>
             </div>
@@ -79,7 +77,7 @@ const Create = ({
         }
         {activeTable == 'Posts' &&
           <div>
-            <button onClick={setPosts}>Update Table</button>
+            <button onClick={setPosts} className="entry-button">Update Table</button>
             <div className="result-table-container">
               <ResultTable data={postDataList} header={postHeaderList}/>
             </div>
@@ -87,12 +85,12 @@ const Create = ({
         }
         {activeTable == 'Comments' &&
           <div>
-            <button onClick={setComments}>Update Table</button>
+            <button onClick={setComments} className="entry-button">Update Table</button>
             <div className="result-table-container">
               <ResultTable data={commentDataList} header={commentHeaderList}/>
             </div>
           </div>
-        } */}
+        }
 
       </div>
     </div>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Axios from 'axios';
 
-const AdsCreateList = () => {
+const UserCreateList = () => {
 
   const [inputValues, setInputValues] = useState(['', '', '', '', '', '', '', '']);
 
@@ -11,26 +11,22 @@ const AdsCreateList = () => {
     setInputValues(newInputValues);
   };
 
-  const postAds = async () => {
+  const postUsers = async () => {
 
     const postData = {
-        adId: inputValues[0],
-        aproductId: inputValues[1],
-        auserId: inputValues[2],
-        clickcounter: inputValues[3],
-        mediaLink: inputValues[4],
-        product: null,
-        text: inputValues[5],
-        user: null,
+      userId: inputValues[0],
+      username: inputValues[1],
+      upassword: inputValues[2],
+      email: inputValues[3],
+      gender: inputValues[4],
+      age: inputValues[5],
+      first_name: inputValues[6],
+      last_name: inputValues[7],
     };
-
-    // ---Testing---
-    console.log(postData);
-    // -------------
 
     try {
 
-      const apiUrl = 'http://127.0.0.1:8070/Ads';
+      const apiUrl = 'http://127.0.0.1:8070/Users';
       const response = await Axios.post(apiUrl, postData);
 
       console.log('Response:', response.data);
@@ -38,9 +34,10 @@ const AdsCreateList = () => {
     } catch (error) {
       console.error('Error: oh no !: ', error.message);
     }
+    
   };
 
-  const inputLabels = ['AdID', 'ProductID', 'UserID', 'ClickCounter', 'MediaLink', 'Text'];
+  const inputLabels = ['UserID', 'Username', 'Password', 'Email', 'Gender', 'Age', 'First Name', 'Last Name'];
 
   return (
     <div>
@@ -57,9 +54,9 @@ const AdsCreateList = () => {
             ))}
         </div>
 
-        <button onClick={postAds}>Create Entry</button>
+        <button onClick={postUsers} className="entry-button">Create Entry</button>
     </div>
   );
 };
 
-export default AdsCreateList;
+export default UserCreateList;

@@ -49,17 +49,73 @@ function App() {
     Axios.get('http://127.0.0.1:8070/Users').then(
       (response)=> {
 
-        // for (let i = 0; i < length(response.data); i++) {
-        //   let data = response.data[i];
-        //   let row = [data.adId, data.aproductId, data.auserId, data.text, data.clickCounter, data.mediaLink];
-        //   updatedAdList.push(row);
-        // }
-        console.log(response);
+        for (let i = 0; i < length(response.data); i++) {
+          let data = response.data[i];
+          let row = [data.userID, data.username, data.upassword, data.email, data.gender, data.age, data.first_name, data.last_name];
+          updatedUserList.push(row);
+        }
 
       }
     );
 
-    // return updatedUserList;
+    return updatedUserList;
+  }
+
+  const getProducts = () => {
+
+    let updatedProductList = [];
+
+    Axios.get('http://127.0.0.1:8070/Products').then(
+      (response)=> {
+
+        for (let i = 0; i < length(response.data); i++) {
+          let data = response.data[i];
+          let row = [data.productId, data.pstatus, data.ptype, data.price, data.puserId, data.desc];
+          updatedProductList.push(row);
+        }
+
+      }
+    );
+
+    return updatedProductList;
+  }
+
+  const getPosts = () => {
+
+    let updatedPostList = [];
+
+    Axios.get('http://127.0.0.1:8070/Posts').then(
+      (response)=> {
+
+        for (let i = 0; i < length(response.data); i++) {
+          let data = response.data[i];
+          let row = [data.postId, data.likes, data.plocation, data.post_Date, data.pproductId];
+          updatedPostList.push(row);
+        }
+
+      }
+    );
+
+    return updatedPostList;
+  }
+
+  const getComments = () => {
+
+    let updatedCommentList = [];
+
+    Axios.get('http://127.0.0.1:8070/Comments').then(
+      (response)=> {
+
+        for (let i = 0; i < length(response.data); i++) {
+          let data = response.data[i];
+          let row = [data.commentId, data.content, data.cuser_id, data.cpost_id, data.com_date];
+          updatedCommentList.push(row);
+        }
+
+      }
+    );
+
+    return updatedCommentList;
   }
 
   const setState = (value) => {
@@ -76,12 +132,34 @@ function App() {
     setUserList(list);
   }
 
-  const setUpdate = () => {
-    setPageUpdate(pageUpdate + "")
+  const setProducts = () => {
+    const list = getProducts();
+    setProductList(list);
   }
 
-  
-  const adHeaderList = ['AdID', 'ProductID', 'UserID', 'Text', 'ClickCounter', 'MediaLink'];
+  const setPosts = () => {
+    const list = getPosts();
+    setPostList(list);
+  }
+
+  const setComments = () => {
+    const list = getComments();
+    setCommentList(list);
+  }
+
+
+  const setUpdate = () => {
+    var currentState = pageState;
+    if (currentState == 2) {
+      setPageState(currentState - 1);
+      // setPageState(currentState);
+    }
+    else {
+      setPageState(currentState + 1);
+      // setPageState(currentState);
+    }
+    
+  }
 
   return (
     <div className="App">
@@ -103,9 +181,42 @@ function App() {
           adDataList={ adDataList }
           setUsers={ setUsers }
           userDataList={ userDataList }
+          setProducts={ setProducts }
+          productDataList={ productDataList }
+          setPosts={ setPosts }
+          postDataList={ postDataList }
+          setComments={ setComments }
+          commentDataList={ commentDataList }
         />
       )}
-      {/* USE THIS FOR CONDITIONAL PAGES */}
+      {pageState == 1 && (
+        <Update 
+          setAds={ setAds }
+          adDataList={ adDataList }
+          setUsers={ setUsers }
+          userDataList={ userDataList }
+          setProducts={ setProducts }
+          productDataList={ productDataList }
+          setPosts={ setPosts }
+          postDataList={ postDataList }
+          setComments={ setComments }
+          commentDataList={ commentDataList }
+        />
+      )}
+      {pageState == 2 && (
+        <Delete 
+          setAds={ setAds }
+          adDataList={ adDataList }
+          setUsers={ setUsers }
+          userDataList={ userDataList }
+          setProducts={ setProducts }
+          productDataList={ productDataList }
+          setPosts={ setPosts }
+          postDataList={ postDataList }
+          setComments={ setComments }
+          commentDataList={ commentDataList }
+        />
+      )}
 
 
       <button 
