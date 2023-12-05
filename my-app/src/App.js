@@ -4,9 +4,6 @@ import Axios from 'axios';
 import Create from "./Create.js";
 import Update from "./Update.js";
 import Delete from "./Delete.js";
-import ResultTable from "./components/ResultTable.js";
-import TableDropdown from "./components/TableDropdown.js";
-import AdsCreateList from './components/AdsCreateList.js';
 
 function App() {
 
@@ -45,6 +42,26 @@ function App() {
     return updatedAdList;
   }
 
+  const getUsers = () => {
+
+    let updatedUserList = [];
+
+    Axios.get('http://127.0.0.1:8070/Users').then(
+      (response)=> {
+
+        // for (let i = 0; i < length(response.data); i++) {
+        //   let data = response.data[i];
+        //   let row = [data.adId, data.aproductId, data.auserId, data.text, data.clickCounter, data.mediaLink];
+        //   updatedAdList.push(row);
+        // }
+        console.log(response);
+
+      }
+    );
+
+    // return updatedUserList;
+  }
+
   const setState = (value) => {
     setPageState(value);
   }
@@ -52,6 +69,11 @@ function App() {
   const setAds = () => {
     const list = getAds();
     setAdList(list);
+  }
+
+  const setUsers = () => {
+    const list = getUsers();
+    setUserList(list);
   }
 
   const setUpdate = () => {
@@ -79,6 +101,8 @@ function App() {
         <Create 
           setAds={ setAds }
           adDataList={ adDataList }
+          setUsers={ setUsers }
+          userDataList={ userDataList }
         />
       )}
       {/* USE THIS FOR CONDITIONAL PAGES */}

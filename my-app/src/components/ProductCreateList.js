@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-const UserCreateList = () => {
+const ProductCreateList = () => {
 
-  const [inputValues, setInputValues] = useState(['', '', '', '', '', '', '', '']);
+  const [inputValues, setInputValues] = useState(['', '', '', '', '', '']);
 
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
@@ -11,7 +11,7 @@ const UserCreateList = () => {
     setInputValues(newInputValues);
   };
 
-  const postUsers = async () => {
+  const postProducts = async () => {
 
     const postData = {
         adId: inputValues[0],
@@ -26,7 +26,7 @@ const UserCreateList = () => {
 
     try {
 
-      const apiUrl = 'http://127.0.0.1:8070/Users';
+      const apiUrl = 'http://127.0.0.1:8070/Products';
       const response = await Axios.post(apiUrl, postData);
 
       console.log('Response:', response.data);
@@ -36,7 +36,7 @@ const UserCreateList = () => {
     }
   };
 
-  const inputLabels = ['UserID', 'Username', 'Password', 'Email', 'Gender', 'Age', 'First Name', 'Last Name'];
+  const inputLabels = ['ProductID', 'Status', 'Type', 'Price', 'UserID', 'Description'];
 
   return (
     <div>
@@ -53,9 +53,9 @@ const UserCreateList = () => {
             ))}
         </div>
 
-        <button onClick={postUsers}>Create Entry</button>
+        <button onClick={postProducts}>Create Entry</button>
     </div>
   );
 };
 
-export default UserCreateList;
+export default ProductCreateList;
