@@ -14,7 +14,7 @@ const UsersUpdate = () => {
 
     const updateUserByID = async () => {
 
-        const updateData = [parseInt(userId, 10), {
+        const updateData = {
             username: inputValues[0],
             upassword: inputValues[1],
             email: inputValues[2],
@@ -22,13 +22,13 @@ const UsersUpdate = () => {
             age: inputValues[4],
             first_name: inputValues[5],
             last_name: inputValues[6],
-        }];
+        };
 
-        console.log(updateData);
-
+        const id = parseInt(userId, 10);
+        
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Users'
+            const apiUrl = `http://127.0.0.1:8070/Users/${id}`
             const response = await Axios.put(apiUrl, updateData);
             
             console.log('Put successfully: ', response.data);

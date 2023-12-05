@@ -15,12 +15,10 @@ const UsersDelete = () => {
 
         const deleteData = parseInt(inputValues[0], 10);
 
-        console.log(deleteData);
-
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Users'
-            const response = await Axios.delete(apiUrl, deleteData);
+            const apiUrl = `http://127.0.0.1:8070/Users/${deleteData}`
+            const response = await Axios.delete(apiUrl);
             
             console.log('Deleted successfully: ', response.data);
 

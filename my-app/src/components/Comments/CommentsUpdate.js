@@ -14,18 +14,18 @@ const CommentsUpdate = () => {
 
     const updateCommentByID = async () => {
 
-        const updateData = [parseInt(commentId, 10), {
+        const updateData = {
             com_date: inputValues[1],
             content: inputValues[0],
             cpost_id: inputValues[3],
             cuser_id: inputValues[2],
-        }];
+        };
 
-        console.log(updateData);
+        const id = parseInt(commentId, 10);
 
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Comments'
+            const apiUrl = `http://127.0.0.1:8070/Comments/${id}`
             const response = await Axios.put(apiUrl, updateData);
             
             console.log('Put successfully: ', response.data);

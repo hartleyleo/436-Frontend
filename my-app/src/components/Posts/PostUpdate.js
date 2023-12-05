@@ -14,18 +14,20 @@ const PostsUpdate = () => {
 
     const updatePostByID = async () => {
 
-        const updateData = [parseInt(postId, 10), {
+        const updateData = {
             likes: inputValues[0],
             plocation: inputValues[1],
             post_Date: inputValues[2],
             pproductId: inputValues[3],
-        }];
+        };
+
+        const id = parseInt(postId, 10);
 
         console.log(updateData);
 
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Posts'
+            const apiUrl = `http://127.0.0.1:8070/Posts/${id}`
             const response = await Axios.put(apiUrl, updateData);
             
             console.log('Put successfully: ', response.data);
