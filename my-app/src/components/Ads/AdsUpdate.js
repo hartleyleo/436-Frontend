@@ -14,19 +14,19 @@ const AdsUpdate = () => {
 
     const updateAdByID = async () => {
 
-        const updateData = [parseInt(adId, 10), {
+        const updateData = {
             aproductId: inputValues[0],
             auserId: inputValues[1],
             clickcounter: inputValues[2],
             mediaLink: inputValues[3],
             text: inputValues[4],
-        }];
+        };
 
-        console.log(updateData);
+        const id = parseInt(adId, 10);
 
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Ads'
+            const apiUrl = `http://127.0.0.1:8070/Ads/${id}`
             const response = await Axios.put(apiUrl, updateData);
             
             console.log('Put successfully: ', response.data);

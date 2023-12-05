@@ -13,14 +13,12 @@ const ProductDelete = () => {
 
     const deleteProductByID = async () => {
 
-        const deleteData = parseInt(inputValues[0], 10);
-
-        console.log(deleteData);
+        const id = parseInt(inputValues[0], 10);
 
         try {
 
-            const apiUrl = 'http://127.0.0.1:8070/Products'
-            const response = await Axios.delete(apiUrl, deleteData);
+            const apiUrl = `http://127.0.0.1:8070/Products/${id}`
+            const response = await Axios.delete(apiUrl);
             
             console.log('Deleted successfully: ', response.data);
 
