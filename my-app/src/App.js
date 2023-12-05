@@ -8,7 +8,6 @@ import Delete from "./Delete.js";
 function App() {
 
   const [pageState, setPageState] = useState(0);
-  const [pageUpdate, setPageUpdate] = useState("");
   
   const [adDataList, setAdList] = useState([]);
   const [userDataList, setUserList] = useState([]);
@@ -147,20 +146,6 @@ function App() {
     setCommentList(list);
   }
 
-
-  const setUpdate = () => {
-    var currentState = pageState;
-    if (currentState == 2) {
-      setPageState(currentState - 1);
-      // setPageState(currentState);
-    }
-    else {
-      setPageState(currentState + 1);
-      // setPageState(currentState);
-    }
-    
-  }
-
   return (
     <div className="App">
 
@@ -171,9 +156,6 @@ function App() {
         <div className="Nav-button" onClick={() => setState(1)}>Update</div>
         <div className="Nav-button" onClick={() => setState(2)}>Delete</div>
       </div>
-
-
-      <div>{pageUpdate}</div>
 
       {pageState == 0 && (
         <Create 
@@ -218,18 +200,7 @@ function App() {
         />
       )}
 
-
-      <button 
-        className="fixed-button"
-        onClick={setUpdate}
-      >
-        Update Page
-      </button>
-
     </div>
-
-
-
 
   );
 }
